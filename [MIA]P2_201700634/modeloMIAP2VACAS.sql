@@ -168,6 +168,9 @@ INSERT INTO mensaje(mensaje,url_mensaje,fecha_mensaje,fk_id_usuario,fk_id_chat,f
 
 INSERT INTO amigo(fk_id_usuario, fk_id_usuario2, fecha_amigo) VALUES(1,2,sysdate);
 INSERT INTO amigo(fk_id_usuario, fk_id_usuario2, fecha_amigo) VALUES(3,4,sysdate);
+INSERT INTO amigo(fk_id_usuario, fk_id_usuario2, fecha_amigo) VALUES(21,4,sysdate);
+INSERT INTO amigo(fk_id_usuario, fk_id_usuario2, fecha_amigo) VALUES(21,1,sysdate);
+SELECT * FROM USUARIO
 
 INSERT INTO solicitud(fk_id_usuario, fk_id_usuario2, fecha_solicitud) VALUES (2,3,sysdate);
 
@@ -211,4 +214,95 @@ DROP TABLE tag_publicacion;
 DROP TABLE tag_detalle;
 ------------------- CONSULTAS
 
+--para log in (user, contrasena) experimentar para ver como validar que este correcto ambos casos
 
+SELECT u.id_usuario, u.usuario_usuario
+from usuario u
+where usuario_usuario = 'luisaga'
+    and contrasena_usuario = 'hash contrasena'
+    
+    
+CREATE OR REPLACE FUNCTION "LOGIN" (NUSUARIO IN VARCHAR2, CUSUARIO IN VARCHAR2)
+RETURN VARCHAR2 IS
+BEGIN
+DECLARE RESPUESTA VARCHAR2(10);
+BEGIN
+    SELECT u.usuario_usuario
+    INTO RESPUESTA
+    from usuario u
+    where usuario_usuario = NUSUARIO
+        and contrasena_usuario = CUSUARIO;
+    RETURN RESPUESTA;
+END;
+END "LOGIN";  
+
+select * from usuario
+
+SELECT LOGIN ('carmencita','hash contrasena') AS USUARIO FROM DUAL;
+
+
+
+
+
+create table prueba100 (
+usuario_p varchar2(100),
+contrasena_p varchar2(100)
+);
+
+select * from prueba100
+
+
+
+-- -    registrar usuario
+
+CREATE OR REPLACE PROCEDURE "REGISTROUSUARIO" (nombre_usuario IN VARCHAR2, usuario_usuario IN VARCHAR2, foto_usuario_url IN VARCHAR2, contrasena_usuario IN VARCHAR2) IS
+BEGIN
+    INSERT INTO usuario(nombre_usuario,usuario_usuario,foto_usuario_url,contrasena_usuario) VALUES (nombre_usuario,usuario_usuario,foto_usuario_url,contrasena_usuario);
+END "REGISTROUSUARIO";
+
+
+
+drop procedure "REGISTROUSUARIO"
+EXECUTE "REGISTROUSUARIO" ('ARMANDO E','armando','url foto','contrasena hash');
+select * from usuario
+
+
+--listar tus amigos
+    
+select * from amigo
+
+
+SELECT id_usuario, usuario_usuario
+FROM usuario
+where id_usuario in
+                (SELECT fk_id_usuario
+                 FROM amigo
+                 where fk_id_usuario2 = 1    
+                 UNION
+                 SELECT fk_id_usuario2
+                 FROM amigo
+                 where fk_id_usuario = 1);
+
+
+-- listado de NO AMIGOS 
+select * from amigo;
+select * from usuario
+
+SELECT id_usuario, usuario_usuario
+FROM usuario
+where id_usuario NOT IN
+                (SELECT fk_id_usuario
+                 FROM amigo
+                 where fk_id_usuario2 = 3    
+                 UNION
+                 SELECT fk_id_usuario2
+                 FROM amigo
+                 where fk_id_usuario = 3)
+                 AND id_usuario <> 3;
+
+
+-- pasa saber cual es mi id_user
+
+SELECT id_usuario 
+from usuario 
+where usuario_usuario = 'carmencita'
