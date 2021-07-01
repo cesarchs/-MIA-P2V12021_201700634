@@ -1,0 +1,73 @@
+PROCESO DE PROYECTO 2
+
+pasos a seguir 
+
+leer enunciado
+instalar tecnologias
+
+hacer ER   										LISTO
+hacer base de datos 							LISTO
+analisas que consultas necesito
+hacer las consultas 
+volver procedures las consultas
+
+encriptar las contrasenias						LISTO
+
+    var string = nombre;
+    var crypto = require('crypto');
+    var hash = crypto.createHash('md5').update(string).digest('base64');
+    console.log(hash + ' hash en base 64');
+
+
+
+
+PROCEDURE QUE SI JALO 
+
+create table prueba (
+nombre varchar2(100)
+);
+select * from prueba
+delete table prueba
+
+CREATE PROCEDURE llenado IS
+begin
+declare
+cursor x is select u.usuario_usuario
+            from usuario u;
+vx x%ROWTYPE;
+BEGIN
+    open x;
+    loop
+        fetch x into vx;
+        EXIT WHEN x%NOTFOUND; 
+        insert into prueba (nombre) values (vx.usuario_usuario);
+        end loop;
+        close x;
+END;
+END llenado;
+      
+execute llenado;
+
+drop procedure llenado
+
+
+
+
+
+
+
+
+
+
+CREATE OR REPLACE PROCEDURE "llenado2" (INOMBRE IN VARCHAR2) IS
+BEGIN
+        insert into prueba (nombre) values (INOMBRE);
+END "llenado2";
+
+
+drop procedure "llenado2"
+
+
+EXECUTE "llenado2" ('cesar');
+
+select * from prueba

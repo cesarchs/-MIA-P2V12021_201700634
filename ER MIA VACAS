@@ -1,0 +1,36 @@
+ER MIA VACAS
+
+IDENTIDADES NECESARIAS 
+
+usuarios 
+
+publicaciones 
+		fecha (todas la fechas tienen que llevar la hora)
+	imagen
+	texto
+		tags
+	descripcion
+
+tag
+	id_tag
+	nombre_tag
+	descripcion
+
+chats
+		fecha
+bots (esta tendo duda) no creo q sea necesaria, o que si debe de guardar y que no debo
+
+amigo
+		fecha
+
+solicitudes
+			fecha
+
+
+
+
+
+CONSULTAS A CREAR
+si exite el usuario (usuario es unico)
+si eres amigo de alguien mas
+si tienes el modo bot activado
