@@ -31,6 +31,32 @@ solicitudes
 
 
 CONSULTAS A CREAR
-si exite el usuario (usuario es unico)
+para log in (user, contrasena) experimentar para ver como validar que este correcto ambos casos
+
+registrar usuario 
+		Nombre completo
+		Usuario
+		Contraseña
+		Repetir contraseña
+		foto
+
+si exite el usuario (usuario es unico)  CON EL UNIQUE EN LA TABLA YA NO ES NECESARIO 
+
 si eres amigo de alguien mas
+
+listar tus amigos
+
 si tienes el modo bot activado
+
+updates para los datos excepto la contrasenia (la contrasenia nos sirve para verificar la cuenta)
+
+crear solicitud 
+
+ver publicaciones de amigos y mias
+
+crear publicacion 
+
+buscar publicacion por tag
+
+
+

@@ -263,8 +263,14 @@ END "REGISTROUSUARIO";
 
 
 drop procedure "REGISTROUSUARIO"
-EXECUTE "REGISTROUSUARIO" ('ARMANDO E','armando','url foto','contrasena hash');
+EXECUTE "REGISTROUSUARIO" ('ARMANDO E','armando3','url foto','contrasena hash');
+
+delete from usuario
+ where id_usuario=77;
 select * from usuario
+
+
+
 
 
 --listar tus amigos
@@ -306,3 +312,5 @@ where id_usuario NOT IN
 SELECT id_usuario 
 from usuario 
 where usuario_usuario = 'carmencita'
+
+-- PARA CREAR PUBLICACIONES 
