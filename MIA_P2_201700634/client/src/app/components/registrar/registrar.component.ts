@@ -14,7 +14,7 @@ export class RegistrarComponent implements OnInit {
   contrasena_usuario = ''
   contrasena_usuario2 = ''
   foto_usuario_url=''
-
+  image = ''
 
   datos = []
   constructor(private usuarioService: UsuarioService, private _routrer:Router) { }
@@ -28,7 +28,11 @@ export class RegistrarComponent implements OnInit {
       foto_usuario_url:this.foto_usuario_url,
       contrasena_usuario: this.contrasena_usuario
     }
-    if (this.contrasena_usuario= this.contrasena_usuario2){
+    if (this.contrasena_usuario== this.contrasena_usuario2){
+      console.log(this.contrasena_usuario);
+      console.log(this.contrasena_usuario2);
+      console.log(this.foto_usuario_url);
+      
       this.usuarioService.createUserp(data).subscribe((res: any) => {
         if (res.status === 400) {
           console.error(res.data)
@@ -39,6 +43,7 @@ export class RegistrarComponent implements OnInit {
       }, (err: any) => {
         console.error(err)
       })
-    }
+    } else
+    alert('la contrasena no coincide');
   }
 }

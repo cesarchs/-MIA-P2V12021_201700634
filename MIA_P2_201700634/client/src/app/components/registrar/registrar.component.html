@@ -19,7 +19,8 @@
                     placeholder="confirme su contraseña">
             </div>
             <form name="subida-imagenes" type="POST" enctype="multipart/formdata" >
-                <input type="file" name="imagen" />
+                <input type="file" name="foto_usuario_url" />
+                <input type="submit" name="foto_usuario_url" value="Enviar imagen" />
             </form>
             <div class="card-title">
                 <button class="btn btn-secondary " type="button" (click)="guardar()" >REGISTRARSE</button>
