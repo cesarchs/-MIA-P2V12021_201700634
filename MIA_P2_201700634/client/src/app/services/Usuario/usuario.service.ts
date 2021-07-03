@@ -17,7 +17,12 @@ export class UsuarioService {
   getAll() {
     return this.http.get(`${this.URL}/getAll`);
   }
+
   buscarUser(user) {
     return this.http.post(`${this.URL}/Login`,user);
+  }
+
+  createUserp(user) {
+    return this.http.post(`${this.URL}/addUsuariop`, user);
   }
 }

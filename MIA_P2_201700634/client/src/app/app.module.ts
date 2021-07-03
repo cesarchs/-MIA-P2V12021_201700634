@@ -7,12 +7,28 @@ import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
+import { RegistrarComponent } from './components/registrar/registrar.component';
+import { GenerarPublicacionComponent } from './components/generar-publicacion/generar-publicacion.component';
+import { PublicacionesComponent } from './components/publicaciones/publicaciones.component';
+import { ModificarpComponent } from './components/modificarp/modificarp.component';
+import { AmigosComponent } from './components/amigos/amigos.component';
+import { NamigosComponent } from './components/namigos/namigos.component';
+import { AchatComponent } from './components/achat/achat.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrarComponent,
+    GenerarPublicacionComponent,
+    PublicacionesComponent,
+    ModificarpComponent,
+    AmigosComponent,
+    NamigosComponent,
+    AchatComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

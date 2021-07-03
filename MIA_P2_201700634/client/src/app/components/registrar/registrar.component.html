@@ -1,0 +1,29 @@
+<div class="global-container">
+    <div class="card login-form text-center">
+        <div class="card-body text-center">
+            <h3 class="card-title">REGISTRARSE EN LA MEJOR RED SOCIAL</h3>
+            <div class="card-title">
+                <input type="text" class="form-control" value="" id="nombre_usuario" name="nombre_usuario" [(ngModel)]="nombre_usuario"
+                    placeholder="Ingresa su Nombre completo">
+            </div>
+            <div class="card-title">
+                <input type="text" class="form-control" value="" id="usuario_usuario" name="usuario_usuario" [(ngModel)]="usuario_usuario"
+                    placeholder="Ingresa un usuario">
+            </div>
+            <div class="card-title">
+                <input type="text" class="form-control" value="" id="contrasena_usuario" name="contrasena_usuario" [(ngModel)]="contrasena_usuario"
+                    placeholder="Ingresa una Contraseña">
+            </div>
+            <div class="card-title">
+                <input type="text" class="form-control" value="" id="contrasena_usuario2" name="contrasena_usuario2" [(ngModel)]="contrasena_usuario2"
+                    placeholder="confirme su contraseña">
+            </div>
+            <form name="subida-imagenes" type="POST" enctype="multipart/formdata" >
+                <input type="file" name="imagen" />
+            </form>
+            <div class="card-title">
+                <button class="btn btn-secondary " type="button" (click)="guardar()" >REGISTRARSE</button>
+            </div>
+        </div>
+    </div>
+</div>
