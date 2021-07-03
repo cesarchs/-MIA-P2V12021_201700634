@@ -1,5 +1,7 @@
 const db = require('../db/database');
 const oracledb = require('oracledb');
+const { Router } = require('express');
+
 oracledb.autoCommit = true
 
 
@@ -63,7 +65,7 @@ const addUsuariop = async (req, res) => {
     }
 }
 
-
+//////////////////// GET's
 
 const getAll = async (req, res) => {
     let connection
@@ -82,10 +84,46 @@ const getAll = async (req, res) => {
 
 }
 
+///////////////////// para log in 
+const Login = async (req, res) => {
+    console.log(req.body);
+//LOGIN ('carmencita','hash contrasena')
+//CREATE OR REPLACE FUNCTION "LOGIN" (NUSUARIO IN VARCHAR2, CUSUARIO IN VARCHAR2)
+    let {NUSUARIO, CUSUARIO} = req.body
+    console.log(req.body.NUSUARIO + ' ESTE VIENE DE LA VISTA');
+    var string = CUSUARIO;
+    var crypto = require('crypto');
+    var hash = crypto.createHash('md5').update(string).digest('base64');
+    console.log(hash + ' hash en base 64 que viene del loin'); 
+
+    let connection
+    try {
+        connection = await oracledb.getConnection(db)
+        let sql = `SELECT "LOGIN" ('${req.body.NUSUARIO}','${hash}') FROM DUAL `
+        let result = await connection.execute(sql);
+        console.log(result.rows[0][0]);
+       // if (result.rows[0][0]==NUSUARIO){
+        //    console.log('')
+        //};
+        res.send({
+            status: 200,
+            data: result.rows
+        })
+    } catch (e) {
+        console.error(e)
+        res.send({
+            status: 400,
+            data: e
+        })
+    }
+
+}
+
 
 
 module.exports = {
     addUsuario,
     addUsuariop,
-    getAll
+    getAll,
+    Login
 }
