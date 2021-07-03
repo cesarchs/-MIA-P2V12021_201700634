@@ -5,10 +5,9 @@ DESARROLLADO POR: **CESAR LEONEL CHAMALE SICAN**
 CARNET: **201700634**
 
 
-#### EN QUE CONSISTE EL PROYECTO Y TECNOLOGIAS USADAS.
+#### EN QUE CONSISTE EL PROYECTO ####
 El proyecto es una red social donde podremos hacer login en nuestro usuario o bien crear uno, seguido de eso podremos tener foto de perfil asi como hacer publicaciones con imagenes y tags. asi como tambien podemos mandar solicitudes y volvernos amigos de nuevas personas en su perfil de la red social, por lo tanto podremos ver las publicaciones que nuestro amigo a publicado, en las mismas podemos hacer filtraciones de las publicaciones por medio de los tags en ellas, por ultimo tambien tenemos un modulo de chat, donde podemos hablara con la otra persona o bien itractuar con un bot propio del sistema donde podremos obtener informacion sobre las estadistica de la pandemia COVID-19 mediante el uso de palabras clave para que el mismo nos responda, siempre que la persona a la que le estemos mandando el mensaje tenga activa la funcion de bot.
 
-Este proyecto consistio en desarrollar una pagina web como una red social donde mediante la implentacion de tecnoligias como angular en la parte del cliente, asi mismo usando node.js en la parte de la api y por ultimo implementando ORACLE en la parte de base de datos dimos resolucion a la descripcion previamente dada.
 
 #### ENTIDAD RELACION ####
 ![ER PROYECTO 2](https://github.com/cesarchs/-MIA-P2V12021_201700634/blob/main/%5BMIA%5DER_P2_201700634%20(5).png)
@@ -225,8 +224,11 @@ SELECT u.id_usuario, u.usuario_usuario
 from usuario u
 where usuario_usuario = 'luisaga'
     and contrasena_usuario = 'hash contrasena'
-    
-    
+
+
+~~~
+EN ESTE PROCEDURE, ENCOTRAMOS LA FUNICONALIDAD DE QUE NOS COMPARA ENTRE TODOS LOS USUARIOS LAS CREDENCIALES INGRESADAS POR LA PERONA QUE EMPLEA EL PROGRAMA, PARA VERIFICAR LA VERACIDAD DE SU CUENTA.
+~~~
 CREATE OR REPLACE FUNCTION "LOGIN" (NUSUARIO IN VARCHAR2, CUSUARIO IN VARCHAR2)
 RETURN VARCHAR2 IS
 BEGIN
@@ -268,8 +270,11 @@ contrasena_p varchar2(100)
 
 select * from prueba100
 
+~~~
+EN ESTE PROCEDURE, ENCOTRAMOS LA FUNICONALIDAD DE QUE EL PROCEDIMIENTO NOS VA A INGRESAR UN USUARIO LA  BASE DE DATOS. EN DONDE SOLAMENTE DEBEMOS DE MANDAR LOS DATOS LLAMANDO AL PROCEDURE DESDE LA DEL SERVIDOR SIN NECESIDAD DE MOSTRAR LO QUE SE PODRIA APRECIAR DE LA ARQUITECTURA DE NUESTRA BASE DE DATOS.
 
 
+~~~
 -- -    registrar usuario
 
 CREATE OR REPLACE PROCEDURE "REGISTROUSUARIO" (nombre_usuario IN VARCHAR2, usuario_usuario IN VARCHAR2, foto_usuario_url IN VARCHAR2, contrasena_usuario IN VARCHAR2) IS
@@ -330,9 +335,13 @@ SELECT id_usuario
 from usuario 
 where usuario_usuario = 'carmencita'
 ~~~
+#### endpoints ####
+mediate la implementacion de las consultas anteriores, genramos rutas donde podimos implementar los endpoints en la capa de servidor y de cliente.
 
 #### VERSION DE ORACLE ####
 ![VERSION ORACLE]( https://github.com/cesarchs/-MIA-P2V12021_201700634/blob/main/VERSION.JPG )
 
 #### ARQUITECTURA IMPLEMENTADA ####
+En este proyecto implementamos una arquitectura basada en la arquitectura de 3 capas, en el cual pedemos encontra la siguiente cofiguracion junto a sus tecnologias usades en este proyecto.
 
+Este proyecto consistio en desarrollar una pagina web como una red social donde mediante la implentacion de tecnoligias como angular en la parte del cliente nos comunicamos con la parte de servidor la cual fue implementada usando node.js y por ultimo como tercera capa implementando ORACLE en la parte de la tercera capa para la base de datos, de esta manera  dimos resolucion a la descripcion dicha el principio de la documentacion.
